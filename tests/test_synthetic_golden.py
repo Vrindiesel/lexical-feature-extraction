@@ -16,6 +16,27 @@ import pytest
 SYNTH_DIR = os.path.join(os.path.dirname(__file__), "..", "examples", "synthetic")
 
 
+def assert_deep_close(a, b, path=""):
+    """Exact equality except floats, which get a last-ulp-scale tolerance.
+
+    Python 3.12 switched builtin sum() to compensated summation, so the
+    unrounded means and p-values in the golden file (generated on 3.9)
+    drift in the final bit on newer interpreters.
+    """
+    if isinstance(a, float) and isinstance(b, float):
+        assert a == pytest.approx(b, rel=1e-9, abs=1e-12), path
+    elif isinstance(a, dict) and isinstance(b, dict):
+        assert a.keys() == b.keys(), path
+        for k in a:
+            assert_deep_close(a[k], b[k], f"{path}.{k}")
+    elif isinstance(a, list) and isinstance(b, list):
+        assert len(a) == len(b), path
+        for i, (x, y) in enumerate(zip(a, b)):
+            assert_deep_close(x, y, f"{path}[{i}]")
+    else:
+        assert type(a) is type(b) and a == b, path
+
+
 def _load_generator():
     spec = importlib.util.spec_from_file_location(
         "synth_generate", os.path.join(SYNTH_DIR, "generate.py"))
@@ -48,7 +69,7 @@ def test_golden_summary_matches(tmp_path, corpus_records):
     recomputed = json.loads(out.read_text())
     with open(os.path.join(SYNTH_DIR, "golden_summary.json")) as fin:
         golden = json.load(fin)
-    assert recomputed == golden
+    assert_deep_close(recomputed, golden)
 
 
 def test_ab_gap_is_real(corpus_records):
