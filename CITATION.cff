@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "lexical-feature-extraction"
+authors:
+  - family-names: Harrison
+    given-names: Vrindavan
+version: 0.1.0
+date-released: "2026-07-24"
+license: Apache-2.0
+repository-code: "https://github.com/Vrindiesel/lexical-feature-extraction"
+preferred-citation:
+  type: conference-paper
+  title: "Conversational Style in Open Domain Dialogue Systems: What Makes a Response Sound Natural"
+  authors:
+    - family-names: Harrison
+      given-names: Vrindavan
+    - family-names: Walker
+      given-names: Marilyn A.
+  year: 2026
+  doi: "10.1145/3806774.3827985"
+  conference:
+    name: "ACM International Conference on Intelligent Virtual Agents (IVA 2026)"

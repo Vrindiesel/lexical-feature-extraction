@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lexical-feature-extraction"
+version = "0.1.0"
+description = "Lexical feature extraction and analysis of conversational style in dialogue system responses (IVA 2026 artifact)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Vrindavan Harrison", email = "vharriso@ucsc.edu" },
+]
+keywords = [
+    "dialogue-systems", "conversational-style", "feature-extraction",
+    "pragmatics", "discourse-markers", "hedges", "nlg-evaluation",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[project.optional-dependencies]
+cli = ["typer"]
+viz = ["matplotlib"]
+test = ["pytest", "scipy", "ruff"]
+
+[project.urls]
+Homepage = "https://github.com/Vrindiesel/lexical-feature-extraction"
+Repository = "https://github.com/Vrindiesel/lexical-feature-extraction"
+Issues = "https://github.com/Vrindiesel/lexical-feature-extraction/issues"
+Changelog = "https://github.com/Vrindiesel/lexical-feature-extraction/blob/main/CHANGELOG.md"
+
+[project.scripts]
+lexfeat = "lexfeat.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"lexfeat.lexicons" = ["*.json"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+# typer inspects annotations at runtime, so PEP 604 unions must not be
+# suggested while 3.9 is supported.
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
