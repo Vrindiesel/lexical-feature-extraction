@@ -190,10 +190,14 @@ If you use this library, please cite the paper (see also
 @inproceedings{harrison2026conversational,
   title     = {Conversational Style in Open Domain Dialogue Systems:
                What Makes a Response Sound Natural},
-  author    = {Harrison, Vrindavan and Walker, Marilyn A.},
-  booktitle = {Proceedings of the ACM International Conference on
-               Intelligent Virtual Agents (IVA '26)},
+  author    = {Harrison, Vrindavan and Walker, Marilyn},
+  booktitle = {ACM International Conference on Intelligent Virtual
+               Agents (IVA 2026)},
   year      = {2026},
+  month     = sep,
+  address   = {Puebla, Mexico},
+  publisher = {ACM},
+  isbn      = {979-8-4007-2647-7},
   doi       = {10.1145/3806774.3827985}
 }
 ```

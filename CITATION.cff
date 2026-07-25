@@ -15,8 +15,18 @@ preferred-citation:
     - family-names: Harrison
       given-names: Vrindavan
     - family-names: Walker
-      given-names: Marilyn A.
+      given-names: Marilyn
   year: 2026
   doi: "10.1145/3806774.3827985"
+  isbn: "979-8-4007-2647-7"
+  publisher:
+    name: "ACM"
+    city: "New York"
+    region: "NY"
+    country: "US"
   conference:
     name: "ACM International Conference on Intelligent Virtual Agents (IVA 2026)"
+    city: "Puebla"
+    country: "MX"
+    date-start: "2026-09-07"
+    date-end: "2026-09-11"
